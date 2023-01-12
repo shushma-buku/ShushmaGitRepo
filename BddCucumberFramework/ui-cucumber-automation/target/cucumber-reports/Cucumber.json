@@ -1,0 +1,76 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "Open Coviam site and validate the welcome message",
+        "description": "",
+        "id": "open-a-site-and-validate-the-text;open-coviam-site-and-validate-the-welcome-message",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 4886077677,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Open the Chrome and launch the application site as \u0027http://www.google.com\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "http://www.google.com",
+                  "offset": 52
+                }
+              ],
+              "location": "Steps.open_the_Chrome_and_launch_the_application(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2748812608,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "Enter \u0027Coviam.com\u0027 in search box and click Enter",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Coviam.com",
+                  "offset": 7
+                }
+              ],
+              "location": "Steps.enter_searchtext_in_search_box_click_enter(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2587705168,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "Open \u0027website\u0027 and validate keyword \u0027INNOVATE DIGITAL\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "INNOVATE DIGITAL",
+                  "offset": 37
+                }
+              ],
+              "location": "Steps.open_website_and_validate_keyword(String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Open a site and validate the text",
+    "description": "",
+    "id": "open-a-site-and-validate-the-text",
+    "keyword": "Feature",
+    "uri": "openSiteAndValidateText.feature"
+  }
+]

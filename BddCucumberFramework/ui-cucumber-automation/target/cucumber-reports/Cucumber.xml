@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="10.222595">
+<testcase classname="Open a site and validate the text" name="Open Coviam site and validate the welcome message" time="10.222595">
+<system-out><![CDATA[Given Open the Chrome and launch the application site as 'http://www.google.com'.passed
+When Enter 'Coviam.com' in search box and click Enter.......................passed
+Then Open 'website' and validate keyword 'INNOVATE DIGITAL'.................passed
+]]></system-out>
+</testcase>
+</testsuite>

@@ -1,0 +1,68 @@
+clear
+#echo "Enter the path:"
+#read PATH
+#cd $PATH
+echo "Enter the Input:"
+read file1
+R1=`echo $file1 | cut -f1 -d"~"`
+DS_NAME=`echo $R1 | cut -f1 -d":"`
+RECORD_NAME=`echo $R1 | cut -f2 -d":"`
+FIELD_DELIMITER=`echo $R1 | cut -f3 -d":"`
+R2=`echo $file1 | cut -f2 -d"~"`
+NO_OF_FIELDS=`echo $R2 | cut -f1 -d":"`
+R3=`echo $file1 | cut -f3 -d"~"`
+NO_OF_NFF=`echo $R3 | cut -f1 -d":"`
+j=1
+k=0
+#
+#
+#
+#------DECODER CODE---------------
+#
+#
+echo "<?xml version=\"1.0\" ?>" >>DS
+echo "<Diamond application=\"spark\" softwareVersion=\"1.0.14822.0\" version=\"208\">" >>DS
+echo "<Decoder name=\"$DS_NAME\" type=\"ascii\">" >>DS
+echo " <RecordType root=\"true\" name=\"root\" type=\"none\">" >>DS
+echo "<Logic type=\"sequenceOf\">" >>DS
+echo "<Logic type=\"choice\">" >>DS
+echo "<Logic recordType=\"$RECORD_NAME\" type=\"recordReference\" />" >>DS
+echo "<Logic recordType=\"InvalidRecord\" type=\"recordReference\" />" >>DS
+echo "</Logic>" >>DS
+echo "</Logic>" >>DS
+echo "</RecordType>" >>DS
+echo -n "<RecordType parseQuotes=\"false\" delimiter=\"$FIELD_DELIMITER\" generate=\"record\" allowEOFTerm=\"true\"" >>DS
+echo " terminator=\"lf\" root=\"false\" name=\"$RECORD_NAME\" type=\"delimitedascii\" parseDoubleQuotes=\"false\">" >>DS
+j=1
+while [ $j -le $NO_OF_FIELDS ]
+do
+k=`expr $j + 1`
+echo -n "<Field trimQuotes=\"true\" id=\"$j\" generate=\"field\" name=\"`echo $R2 | cut -f$k -d":"`\" encoding=\"windows-1252\"" >>DS
+echo " trimWhiteSpaceInsideQuotes=\"true\" type=\"string\" trimWhiteSpace=\"true\" />" >>DS
+j=`expr $j + 1`
+done
+echo "</RecordType>" >>DS
+echo -n "<RecordType parseQuotes=\"false\" delimiter=\"lf\" generate=\"record\" allowEOFTerm=\"true\" terminator=\"lf\"" >>DS
+echo " root=\"false\" name=\"InvalidRecord\" type=\"delimitedascii\" parseDoubleQuotes=\"false\"/>" >>DS
+echo -n " <Field trimQuotes=\"true\" id=\"$j\" generate=\"field\" name=\"Invalid_Record\" encoding=\"windows-1252\"" >>DS
+echo " trimWhiteSpaceInsideQuotes=\"true\" type=\"string\" trimWhiteSpace=\"true\"/>" >>DS
+echo "</Decoder>" >>DS
+echo    "<Mappings>" >>DS
+echo        "<Nodes/>" >>DS
+echo        "<DynamicFunctions/>" >>DS
+echo 		"<RecordType name=\"NFFOutput\">"
+l=1
+while [ $l -le $NO_OF_NFF ]
+do
+m=`expr $l + 1`
+echo			"<Field id=\"$j\" name=\"`echo $R3 | cut -f$m -d":"`\" nullable=\"true\" type=\"string\"/>" >>DS
+j=`expr $j + 1`
+l=`expr $l + 1`
+done
+echo		"</RecordType>"
+echo        "<DynamicFunctions/>" >>DS
+echo        "<RecordTypes/>" >>DS
+echo        "<Globals/>" >>DS
+echo    "</Mappings>" >>DS
+echo "</Diamond>" >>DS
+mv DS $DS_NAME"_DS.xml"

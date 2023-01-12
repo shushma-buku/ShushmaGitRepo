@@ -1,0 +1,36 @@
+Record $DS_NAME:$RECORD_NAME:$NO_OF_FIELDS:$FIELD_DELIMITER~F1:F2:F3:F4
+
+"</Field>"-->where to put???
+
+Field delimeter : ':',Record Delimeter:'~'.
+sample data:
+SUBSCRIBER:moc:|:~4:Time_Stamp:Title:Name:Post_code~
+
+
+SUBSCRIBER:moc:|:~4:Time_Stamp:Title:Name:Post_code~2:CDR_TYPE:File_Name~
+int i=0
+
+
+<?xml version="1.0" ?> 
+ <Diamond application="spark" softwareVersion="1.0.14822.0" version="208">
+ <Decoder name="$DS_NAME" type="ascii">
+ <RecordType root="true" name="root" type="none">
+ <Logic type="sequenceOf">
+ <Logic type="choice">
+  <Logic recordType="$RECORD_NAME" type="recordReference" /> 
+  <Logic recordType="INVALID_RECORD" type="recordReference" /> 
+  </Logic>
+  </Logic>
+  </RecordType>
+<RecordType parseQuotes="false" delimiter="$FIELD_DELIMITER" generate="record" allowEOFTerm="true" terminator="lf" root="false" name="fields" type="delimitedascii" parseDoubleQuotes="false">
+  <Field trimQuotes="true" id="$i" generate="field" name="F1" encoding="windows-1252" trimWhiteSpaceInsideQuotes="true" type="string" trimWhiteSpace="true" /> 
+  <Field trimQuotes="true" id="$i" generate="field" name="F2" encoding="windows-1252" trimWhiteSpaceInsideQuotes="true" type="string" trimWhiteSpace="true" /> 
+  <Field trimQuotes="true" id="$i" generate="field" name="F3" encoding="windows-1252" trimWhiteSpaceInsideQuotes="true" type="string" trimWhiteSpace="true" /> 
+  <Field trimQuotes="true" id="$i" generate="field" name="F4" encoding="windows-1252" trimWhiteSpaceInsideQuotes="true" type="string" trimWhiteSpace="true" /> 
+</RecordType>
+<RecordType parseQuotes="false" delimiter="lf" generate="record" allowEOFTerm="true" terminator="lf" root="false" name="INVALID_RECORD" type="delimitedascii" parseDoubleQuotes="false">
+<Field trimQuotes="true" id="65" generate="field" name="InvalidRecord" encoding="windows-1252" trimWhiteSpaceInsideQuotes="true" type="string" trimWhiteSpace="true"/>
+        </RecordType>
+</Decoder>
+
+

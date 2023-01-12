@@ -1,0 +1,146 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "Verifying the postcode of a place with \u0027zippopotam.us\u0027 and save the details",
+        "description": "",
+        "id": "comparison-of-the-details-of-a-place-between-two-websites;verifying-the-postcode-of-a-place-with-\u0027zippopotam.us\u0027-and-save-the-details",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 4367628094,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "baseURL as \u0027http://api.zippopotam.us\u0027, endPoint as \u0027/IN/560001\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "http://api.zippopotam.us",
+                  "offset": 12
+                },
+                {
+                  "val": "/IN/560001",
+                  "offset": 52
+                }
+              ],
+              "location": "Steps.baseurlAsHttpApiZippopotamUsEndPointAsIN(String,String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2747311,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Response has place name as \u0027Vidhana Soudha\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Vidhana Soudha",
+                  "offset": 28
+                }
+              ],
+              "location": "Steps.responseIsSuccessAndHasPlaceNameAs(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 32717,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "Save the details latitude and longitude",
+            "match": {
+              "location": "Steps.saveTheDetailsAnd()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 8,
+        "name": "Get the details of a place with \u0027Mapquest’s Geocoding API\u0027  and compare with \u0027zippopotam.us\u0027 results",
+        "description": "",
+        "id": "comparison-of-the-details-of-a-place-between-two-websites;get-the-details-of-a-place-with-\u0027mapquest’s-geocoding-api\u0027--and-compare-with-\u0027zippopotam.us\u0027-results",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2958469308,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "The baseURL as \u0027http://www.mapquestapi.com/\u0027, endPoint as \u0027geocoding/v1/address\u0027, param1 \u0027key\u0027 value \u0027aPQ5Sz6bp5DouaC487GPr6Ed4gE9aHln\u0027, param2 \u0027location\u0027 value \u0027Bangalore\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "http://www.mapquestapi.com/",
+                  "offset": 16
+                },
+                {
+                  "val": "geocoding/v1/address",
+                  "offset": 59
+                },
+                {
+                  "val": "key",
+                  "offset": 90
+                },
+                {
+                  "val": "aPQ5Sz6bp5DouaC487GPr6Ed4gE9aHln",
+                  "offset": 102
+                },
+                {
+                  "val": "location",
+                  "offset": 145
+                },
+                {
+                  "val": "Bangalore",
+                  "offset": 162
+                }
+              ],
+              "location": "Steps.theBaseURLAsHttpWwwMapquestapiComEndPointAsGeocodingVAddressParamKeyValueAPQSzBpDouaCGPrEdGEAHlnParamLocationValueBangalore(String,String,String,String,String,String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 30333,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "Response is success",
+            "match": {
+              "location": "Steps.responseIsSuccess()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 140060,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "compare the details latitude and longitude fetched, to that of zippopotam results",
+            "match": {
+              "location": "Steps.compareTheDetailsLatAndLngFetchedToThatOfZippopotamResults()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Comparison of the details of a place between two websites",
+    "description": "",
+    "id": "comparison-of-the-details-of-a-place-between-two-websites",
+    "keyword": "Feature",
+    "uri": "placeDetailsComparion.feature"
+  }
+]

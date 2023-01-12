@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="2" time="7.329048">
+<testcase classname="Comparison of the details of a place between two websites" name="Verifying the postcode of a place with 'zippopotam.us' and save the details" time="4.370408">
+<system-out><![CDATA[Given baseURL as 'http://api.zippopotam.us', endPoint as '/IN/560001'.......passed
+When Response has place name as 'Vidhana Soudha'............................passed
+Then Save the details latitude and longitude................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Comparison of the details of a place between two websites" name="Get the details of a place with 'Mapquest’s Geocoding API'  and compare with 'zippopotam.us' results" time="2.95864">
+<system-out><![CDATA[Given The baseURL as 'http://www.mapquestapi.com/', endPoint as 'geocoding/v1/address', param1 'key' value 'aPQ5Sz6bp5DouaC487GPr6Ed4gE9aHln', param2 'location' value 'Bangalore'.passed
+When Response is success....................................................passed
+Then compare the details latitude and longitude fetched, to that of zippopotam results.passed
+]]></system-out>
+</testcase>
+</testsuite>
